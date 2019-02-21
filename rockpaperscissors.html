@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <script>
+        function computerPlay() {
+            let computerRandom = Math.random();
+            if(computerRandom < 0.33){
+                return computerSelection = 'rock'
+            } else if(computerRandom < 0.66) {
+                return computerSelection = 'paper'
+            } else {
+                return computerSelection = 'scissors'
+            }
+            
+        }
+
+        function singleRound(computerSelection, playerSelection){
+            if(computerSelection == playerSelection){
+                return 'It\'s a Draw!'
+            } else if(computerSelection == 'rock' && playerSelection == 'paper'){
+                ++playerScore
+                return 'You Win! Paper beats Rock'
+            } else if(computerSelection == 'rock' && playerSelection == 'scissors'){
+                ++computerScore
+                return 'You Lose! Rock beats scissors'
+            } else if(computerSelection == 'paper' && playerSelection == 'rock'){
+                ++computerScore
+                return 'You Lose! Paper beats rock'
+            } else if(computerSelection == 'paper' && playerSelection == 'scissors'){
+                ++playerScore
+                return 'You win! Scissors beat paper'
+            } else if(computerSelection == 'scissors' && playerSelection == 'rock'){
+                ++playerScore
+                return 'You win! Rock beats scissors'
+            } else if(computerSelection == 'scissors' && playerSelection == 'paper'){
+                ++computerScore
+                return 'You Lose! Scissors beats paper'
+            } else {
+                ++computerScore
+                return 'You Lose! Cheaters never prosper'
+            }
+            
+
+        } 
+        
+        function game() {
+            let playerSelection = prompt('Choose rock, paper or scissors!').toLowerCase();
+            computerPlay();
+            console.log(singleRound(computerSelection, playerSelection));
+            let playerSelection2 = prompt('Choose rock, paper or scissors!').toLowerCase();
+            computerPlay();
+            console.log(singleRound(computerSelection, playerSelection2));
+            let playerSelection3 = prompt('Choose rock, paper or scissors!').toLowerCase();
+            computerPlay();
+            console.log(singleRound(computerSelection, playerSelection3));
+            let playerSelection4 = prompt('Choose rock, paper or scissors!').toLowerCase();
+            computerPlay();
+            console.log(singleRound(computerSelection, playerSelection4));
+            let playerSelection5 = prompt('Choose rock, paper or scissors!').toLowerCase();
+            computerPlay();
+            console.log(singleRound(computerSelection, playerSelection5));
+           
+            let finalScore = 'Final Score: Humans ' + playerScore + ' - ' + computerScore + ' Computers'
+            return finalScore;
+        }
+
+        let playerScore = 0
+        let computerScore = 0
+    
+    console.log(game())
+    
+        
+        
+        
+    
+    
+    </script>
+</body>
+</html>
