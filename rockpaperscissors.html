@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+    <title>Rock Paper Scissors</title>
+    <meta charset="utf-8"/>
+</head>
 <body>
     <script>
         function computerPlay() {
-            let computerRandom = Math.random();
-            if(computerRandom < 0.33){
+            let computerRandom = Math.floor(Math.random()*3);
+            if(computerRandom == 0){
                 return computerSelection = 'rock'
-            } else if(computerRandom < 0.66) {
+            } else if(computerRandom == 1) {
                 return computerSelection = 'paper'
             } else {
                 return computerSelection = 'scissors'
@@ -17,63 +22,38 @@
         function singleRound(computerSelection, playerSelection){
             if(computerSelection == playerSelection){
                 return 'It\'s a Draw!'
-            } else if(computerSelection == 'rock' && playerSelection == 'paper'){
-                ++playerScore
-                return 'You Win! Paper beats Rock'
-            } else if(computerSelection == 'rock' && playerSelection == 'scissors'){
-                ++computerScore
-                return 'You Lose! Rock beats scissors'
-            } else if(computerSelection == 'paper' && playerSelection == 'rock'){
-                ++computerScore
-                return 'You Lose! Paper beats rock'
-            } else if(computerSelection == 'paper' && playerSelection == 'scissors'){
-                ++playerScore
-                return 'You win! Scissors beat paper'
-            } else if(computerSelection == 'scissors' && playerSelection == 'rock'){
-                ++playerScore
-                return 'You win! Rock beats scissors'
-            } else if(computerSelection == 'scissors' && playerSelection == 'paper'){
-                ++computerScore
-                return 'You Lose! Scissors beats paper'
+            } else if((computerSelection == 'rock' && playerSelection == 'paper')||
+                (computerSelection == 'paper' && playerSelection == 'scissors') ||
+                (computerSelection == 'scissors' && playerSelection == 'rock')) {
+                    ++playerScore
+                    return 'You Win! ' + playerSelection + ' beats ' + computerSelection;
+            } else if((computerSelection == 'rock' && playerSelection == 'scissors')||
+                (computerSelection == 'paper' && playerSelection == 'rock') ||
+                (computerSelection == 'scissors' && playerSelection == 'paper')) {
+                    ++computerScore
+                    return 'You Lose! ' + computerSelection + ' beats ' + playerSelection;
             } else {
-                ++computerScore
-                return 'You Lose! Cheaters never prosper'
-            }
-            
-
-        } 
-        
-        function game() {
-            let playerSelection = prompt('Choose rock, paper or scissors!').toLowerCase();
-            computerPlay();
-            console.log(singleRound(computerSelection, playerSelection));
-            let playerSelection2 = prompt('Choose rock, paper or scissors!').toLowerCase();
-            computerPlay();
-            console.log(singleRound(computerSelection, playerSelection2));
-            let playerSelection3 = prompt('Choose rock, paper or scissors!').toLowerCase();
-            computerPlay();
-            console.log(singleRound(computerSelection, playerSelection3));
-            let playerSelection4 = prompt('Choose rock, paper or scissors!').toLowerCase();
-            computerPlay();
-            console.log(singleRound(computerSelection, playerSelection4));
-            let playerSelection5 = prompt('Choose rock, paper or scissors!').toLowerCase();
-            computerPlay();
-            console.log(singleRound(computerSelection, playerSelection5));
-           
-            let finalScore = 'Final Score: Humans ' + playerScore + ' - ' + computerScore + ' Computers'
-            return finalScore;
+                return 'Invalid move! try again'
+            }          
         }
+        
+        let playerScore = 0;
+        let computerScore = 0;
 
-        let playerScore = 0
-        let computerScore = 0
-    
-    console.log(game())
-    
-        
-        
-        
-    
-    
+        function game() {
+            for(i = 0; ; i++) {
+                let playerSelection = prompt('Choose rock, paper or scissors!').toLowerCase();
+                computerPlay();
+                console.log(singleRound(computerSelection, playerSelection));
+
+                if(playerScore == 3) {
+                    return 'You Win! Final Score: Humans ' + playerScore + ' - ' + computerScore + ' Computers'
+                } else if(computerScore == 3) {
+                    return 'You Lose! Final Score: Humans ' + playerScore + ' - ' + computerScore + ' Computers'
+                } 
+            }
+        }
+        console.log(game())
     </script>
 </body>
 </html>
