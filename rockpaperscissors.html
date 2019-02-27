@@ -3,57 +3,29 @@
 
 <head>
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8"/>
 </head>
 <body>
-    <script>
-        function computerPlay() {
-            let computerRandom = Math.floor(Math.random()*3);
-            if(computerRandom == 0){
-                return computerSelection = 'rock'
-            } else if(computerRandom == 1) {
-                return computerSelection = 'paper'
-            } else {
-                return computerSelection = 'scissors'
-            }
+    <div class="container">
+        <h1>Rock, Paper, Scissors</h1>
+        <h2>A serious game, for serious people</h2>
+        <div class="choice">
+            <img id="rock" class="picture" src="images/rock.jpg">
+        </div>
+        <div class="choice">
+            <img id="paper" class="picture" src="images/paper.jpg">
+        </div>
+        <div class="choice">
+            <img id="scissors" class="picture" src="images/scissors.jpg">
+        </div>
+
+        <h3>Match Report:</h3>
+        <div id="results">
             
-        }
-
-        function singleRound(computerSelection, playerSelection){
-            if(computerSelection == playerSelection){
-                return 'It\'s a Draw!'
-            } else if((computerSelection == 'rock' && playerSelection == 'paper')||
-                (computerSelection == 'paper' && playerSelection == 'scissors') ||
-                (computerSelection == 'scissors' && playerSelection == 'rock')) {
-                    ++playerScore
-                    return 'You Win! ' + playerSelection + ' beats ' + computerSelection;
-            } else if((computerSelection == 'rock' && playerSelection == 'scissors')||
-                (computerSelection == 'paper' && playerSelection == 'rock') ||
-                (computerSelection == 'scissors' && playerSelection == 'paper')) {
-                    ++computerScore
-                    return 'You Lose! ' + computerSelection + ' beats ' + playerSelection;
-            } else {
-                return 'Invalid move! try again'
-            }          
-        }
-        
-        let playerScore = 0;
-        let computerScore = 0;
-
-        function game() {
-            for(i = 0; ; i++) {
-                let playerSelection = prompt('Choose rock, paper or scissors!').toLowerCase();
-                computerPlay();
-                console.log(singleRound(computerSelection, playerSelection));
-
-                if(playerScore == 3) {
-                    return 'You Win! Final Score: Humans ' + playerScore + ' - ' + computerScore + ' Computers'
-                } else if(computerScore == 3) {
-                    return 'You Lose! Final Score: Humans ' + playerScore + ' - ' + computerScore + ' Computers'
-                } 
-            }
-        }
-        console.log(game())
-    </script>
+        </div>
+        <button onclick="reset()">Reset</button>
+    </div>
+    <script type="text/javaScript" src="rockpaperscissors.js"></script>
 </body>
 </html>

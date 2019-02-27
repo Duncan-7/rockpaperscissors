@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Rock Paper Scissors</title>
+    <meta charset="utf-8"/>
+</head>
+<body>
+    <script>
+        function computerPlay() {
+            let computerRandom = Math.floor(Math.random()*3);
+            if(computerRandom == 0){
+                return computerSelection = 'rock'
+            } else if(computerRandom == 1) {
+                return computerSelection = 'paper'
+            } else {
+                return computerSelection = 'scissors'
+            }
+            
+        }
+
+        function singleRound(computerSelection, playerSelection){
+            if(computerSelection == playerSelection){
+                return 'It\'s a Draw!'
+            } else if((computerSelection == 'rock' && playerSelection == 'paper')||
+                (computerSelection == 'paper' && playerSelection == 'scissors') ||
+                (computerSelection == 'scissors' && playerSelection == 'rock')) {
+                    ++playerScore
+                    return 'You Win! ' + playerSelection + ' beats ' + computerSelection;
+            } else if((computerSelection == 'rock' && playerSelection == 'scissors')||
+                (computerSelection == 'paper' && playerSelection == 'rock') ||
+                (computerSelection == 'scissors' && playerSelection == 'paper')) {
+                    ++computerScore
+                    return 'You Lose! ' + computerSelection + ' beats ' + playerSelection;
+            } else {
+                return 'Invalid move! try again'
+            }          
+        }
+        
+        let playerScore = 0;
+        let computerScore = 0;
+
+        function game() {
+            for(i = 0; ; i++) {
+                let playerSelection = prompt('Choose rock, paper or scissors!').toLowerCase();
+                computerPlay();
+                console.log(singleRound(computerSelection, playerSelection));
+
+                if(playerScore == 3) {
+                    return 'You Win! Final Score: Humans ' + playerScore + ' - ' + computerScore + ' Computers'
+                } else if(computerScore == 3) {
+                    return 'You Lose! Final Score: Humans ' + playerScore + ' - ' + computerScore + ' Computers'
+                } 
+            }
+        }
+        console.log(game())
+    </script>
+</body>
+</html>

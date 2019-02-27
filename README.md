@@ -1,1 +1,1 @@
-My first JavaScript project, creating a console based rock paper scissors game.
+My first JavaScript project, a rock paper scissors game. Added a UI so the console is no longer required to play.
